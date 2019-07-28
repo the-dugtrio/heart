@@ -1,0 +1,38 @@
+[
+    {
+        "path": "/components",
+        "componentName": "docs",
+        "children": [
+            {
+                "name": "installation",
+                "alias": "安装",
+                "index": true
+            },
+            {
+                "alias": "Components",
+                "children": [
+                    {
+                        "groupName": "Data Display",
+                        "children": [
+                            {
+                                "name": "badge",
+                                "alias": "标记"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "path": "/docs/guide",
+        "componentName": "docs",
+        "children": [
+            {
+                "name": "introduce",
+                "alias": "介绍",
+                "index": true
+            }
+        ]
+    }
+]

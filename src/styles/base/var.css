@@ -1,0 +1,23 @@
+@custom-selector :--icon [class^='so-icon-'], [class*=' so-icon-'];
+
+:root {
+    /* Colors
+    -------------------------- */
+    --primary: #c93f3a;
+    --primary-hover: #df6d5b;
+    --primary-dark: #941b08;
+    --color-success: #1dbf6e;
+    --color-warning: #f90;
+    --color-info: #4da6ff;
+    --color-danger: #ff4040;
+    --color-white: #fff;
+
+
+    /* Badge
+    -------------------------- */
+    --badge-fill: var(--color-danger);
+    --badge-radius: 10px;
+    --badge-font-size: 12px;
+    --badge-padding: 5px;
+    --badge-size: 18px;
+}
