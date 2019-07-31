@@ -1,7 +1,12 @@
 import React from 'react';
 import { HashRouter as Router, Link, NavLink, Route } from 'react-router-dom';
+import Badge from '../docs/components/badge.md';
+
 const routesMap = require('../map.json');
+
 import routerConfig from '../router';
+
+
 
 export default class App extends React.Component {
     constructor(props) {
@@ -86,29 +91,28 @@ export default class App extends React.Component {
                     <div className="main container">
                         <nav className="side-nav">
                             {
-                                JSON.stringify(routerConfig)
-                            }
-                            {
                                 routerConfig.map((item, key) => {
                                     return (item.children && item.children.map((com, i) => {
                                         return <Link 
                                                 key={com.path}
-                                                to="/">
-                                                    {com.component}
+                                                to={item.path + '/' + com.path}>
+                                                    {com.path}
                                             </Link>
                                         
                                     }))
                                 })
                             }
                         </nav>
+                        {/* <Route path="/components/badge" component={Badge}>
+                        </Route> */}
 
                         {
                             routerConfig.map((item, key) => {
-                                item.children && item.children.map((com, i) => {
+                                return item.children && item.children.map((com, i) => {
                                     return (
                                         <Route 
                                             key={com.path}
-                                            path={item.path + com.path}
+                                            path={item.path + '/' + com.path}
                                             component={com.component}>
                                         </Route>
                                     )

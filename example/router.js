@@ -6,8 +6,8 @@ const aliasRoutes = [];
 let routes = [];
 let tempRoutes = [];
 const componentMap = {
-    docs: require('./components/docs.jsx').default,
-    changelog: require('./components/changelog.jsx').default
+    docs: require('./components/docs.jsx'),
+    changelog: require('./components/changelog.jsx')
 };
 
 
@@ -23,17 +23,17 @@ function getComponents (components) {
         }
         tempRoutes.push({
             path: component.name,
-            component: (res) => {
+            component: (() => {
                 if (component.componentName) {
-                    res(componentMap[component.componentName]);
+                    return (componentMap[component.componentName]);
                 } else {
                     try {
-                        res(require(`./docs/${component.name}.md`).default);
+                        return require(`./docs/${component.name}.md`).default;
                     } catch (e) {
-                        res(require(`./docs/components/${component.name}.md`).default);
+                        return require(`./docs/components/${component.name}.md`).default;
                     }
                 }
-            }
+            })()
         });
     });
 }
