@@ -1,0 +1,39 @@
+.app  {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    header {
+        display: flex;
+        padding: 12px;
+        justify-content: space-between;
+
+        li {
+            float: left;
+            margin: 16px;
+        }
+    }
+
+    .container {
+        flex: 1;
+        display: flex;
+
+
+        .side-nav {
+            width: 25%;
+            padding: 0px 16px;
+            border-right: 1px solid #ccc;
+
+            li {
+                line-height: 36px;
+            }
+        }
+
+        .content {
+            padding: 20px;
+        }
+    }
+
+    
+}
+
+

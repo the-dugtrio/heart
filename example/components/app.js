@@ -1,12 +1,8 @@
 import React from 'react';
 import { HashRouter as Router, Link, NavLink, Route } from 'react-router-dom';
-import Badge from '../docs/components/badge.md';
-
-const routesMap = require('../map.json');
-
 import routerConfig from '../router';
 
-
+const routesMap = require('../map.json');
 
 export default class App extends React.Component {
     constructor(props) {
@@ -63,65 +59,59 @@ export default class App extends React.Component {
             <Router>
                 <div className="app">
                     <header className="header">
-                        <div className="container">
-                            <h1>
-                                {/* <img src={require('./assets/logo.png')} /> */}
-                                <span>Heart</span>
-                            </h1>
-                            <ul className="nav">
-                                <li className="nav-item">
-                                    <NavLink to="/docs/guide" activeClassName="active">
-                                        指南
-                                    </NavLink>
-                                </li>
-                                <li className="nav-item">
-                                    <NavLink to="/components" activeClassName="active">
-                                        组件
-                                    </NavLink>
-                                </li>
-                                <li className="nav-item">
-                                    <NavLink to="/resource" activeClassName="active">
-                                        资源
-                                    </NavLink>
-                                </li>
-                            </ul>
-                        </div>
+                        <h1>
+                            {/* <img src={require('./assets/logo.png')} /> */}
+                            <span>Heart</span>
+                        </h1>
+                        <ul className="nav">
+                            <li className="nav-item">
+                                <NavLink to="/docs/guide" activeClassName="active">
+                                    指南
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to="/components" activeClassName="active">
+                                    组件
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to="/resource" activeClassName="active">
+                                    资源
+                                </NavLink>
+                            </li>
+                        </ul>
                     </header>
 
                     <div className="main container">
                         <nav className="side-nav">
-                            {
+                            <ul>{
                                 routerConfig.map((item, key) => {
                                     return (item.children && item.children.map((com, i) => {
-                                        return <Link 
-                                                key={com.path}
-                                                to={item.path + '/' + com.path}>
+                                        return <li key={com.path}>
+                                                <Link 
+                                                    to={item.path + '/' + com.path}>
                                                     {com.path}
-                                            </Link>
-                                        
+                                                </Link>
+                                            </li>
                                     }))
                                 })
-                            }
+                            }</ul>
                         </nav>
-                        {/* <Route path="/components/badge" component={Badge}>
-                        </Route> */}
-
-                        {
-                            routerConfig.map((item, key) => {
-                                return item.children && item.children.map((com, i) => {
-                                    return (
-                                        <Route 
-                                            key={com.path}
-                                            path={item.path + '/' + com.path}
-                                            component={com.component}>
-                                        </Route>
-                                    )
-                                })
-                            })
-                        }
-
-
+                       
                         <div className="content">
+                            {
+                                routerConfig.map((item, key) => {
+                                    return item.children && item.children.map((com, i) => {
+                                        return (
+                                            <Route 
+                                                key={com.path}
+                                                path={item.path + '/' + com.path}
+                                                component={com.component}>
+                                            </Route>
+                                        )
+                                    })
+                                })
+                            }
                         </div>
                     </div>
                     <footer className="footer">

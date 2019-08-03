@@ -2,6 +2,7 @@ const HtmlWebPackPlugin = require( 'html-webpack-plugin' );
 var webpack = require('webpack');
 var ProgressBarPlugin = require('progress-bar-webpack-plugin');
 var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const markdownRenderer = require('react-markdown-reader').renderer;
 const path = require( 'path' );
 
 module.exports = {
@@ -12,7 +13,7 @@ module.exports = {
       alias: {
           main: path.resolve(__dirname, '../src'),
           components: path.resolve(__dirname, '../src/components'),
-          examples: path.resolve(__dirname, '../examples')
+          example: path.resolve(__dirname, '../example')
       }
   },
    output: {
@@ -34,7 +35,7 @@ module.exports = {
          },
          {
             test: /\.md$/,
-            use: ['babel-loader', 'react-markdown-loader']
+            use: ['babel-loader', 'markdown-it-react-loader']
          },
          {
             test: /\.css$/,
