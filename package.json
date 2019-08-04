@@ -7,7 +7,10 @@
     "lint": "eslint --ext .js example",
     "webpack-dev-server": "webpack-dev-server",
     "dev": "webpack-dev-server --mode=development --config build/webpack.example.js",
-    "build:file": "node build/bin/build-entry & node build/bin/root-css & node build/bin/version"
+    "clean": "rimraf lib",
+    "build:file": "node build/bin/build-entry & node build/bin/root-css & node build/bin/version",
+    "build:style": "gulp build --gulpfile build/build-style.js",
+    "build": "npm run clean && npm run build:file && npm run lint && cross-env NODE_ENV=production webpack --config build/webpack.umd.js && npm run build:style"
   },
   "repository": {
     "type": "git",
@@ -47,6 +50,9 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "file-save": "^0.2.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
+    "gulp": "^4.0.2",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-postcss": "^8.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "json-loader": "^0.5.7",
@@ -58,7 +64,9 @@
     "react-markdown": "^4.1.0",
     "react-markdown-loader": "^1.2.1",
     "react-markdown-reader": "^1.2.0",
+    "rimraf": "^2.6.3",
     "style-loader": "^0.23.1",
+    "terser-webpack-plugin": "^1.4.1",
     "uppercamelcase": "^3.0.0",
     "url-loader": "^2.1.0",
     "webpack": "^4.38.0",
