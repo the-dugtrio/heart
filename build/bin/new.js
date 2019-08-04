@@ -13,8 +13,7 @@ if (!process.argv[2]) {
 var path = require('path');
 var fileSave = require('file-save');
 var uppercamelcase = require('uppercamelcase');
-var componentsFile = require('../../components.json');
-var navConfigFile = require('../../examples/map.json');
+var navConfigFile = require('../../example/map.json');
 
 var componentname = process.argv[2];
 var chineseName = process.argv[3] || componentname;
@@ -23,29 +22,20 @@ var PackagePath = path.resolve(__dirname, '../../src/components', componentname)
 var Files = [
     {
         filename: 'index.js',
-        content: `import ${ComponentName} from './src/main';
-
-/* istanbul ignore next */
-${ComponentName}.install = function(Vue) {
-    Vue.component(${ComponentName}.name, ${ComponentName});
-};
-
+        content: `import ${ComponentName} from './${componentname}';
 export default ${ComponentName};`
     },
     {
-        filename: 'src/main.vue',
-        content: `<template>
-    <div class="som-${componentname}"></div>
-</template>
-
-<script>
-export default {
-    name: 'som${ComponentName}'
-};
-</script>`
+        filename: `${componentname}.jsx`,
+        content: `import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+export default class ${ComponentName} extends React.Component {
+}
+`
     },
     {
-        filename: path.join('../../../examples/docs/components', componentname, 'index.md'),
+        filename: path.join('../../../example/docs/components', `${componentname}.md`),
         content: `## ${ComponentName} ${chineseName}
 
 ### 概述
@@ -75,37 +65,8 @@ export default {
 | 维护者 | — |
 | 设计师 | — |
 `
-    },
-    {
-        filename: path.join('../../../test/unit/specs', `${componentname}.spec.js`),
-        content: `import ${ComponentName} from 'components/${componentname}';
-import { createTest, destroyVM } from '../util';
-
-describe('${ComponentName}', () => {
-    let vm;
-
-    afterEach(() => {
-        destroyVM(vm);
-    });
-
-    it('create', () => {
-        vm = createTest(${ComponentName}, true);
-        expect(vm.$el).to.exist;
-    });
-});
-`
     }
 ];
-
-// 添加到 components.json
-if (componentsFile.base[componentname]) {
-    console.error(`${componentname} 已存在.`);
-    process.exit(1);
-}
-componentsFile.base[componentname] = `./src/components/${componentname}/index.js`;
-fileSave(path.join(__dirname, '../../components.json'))
-    .write(JSON.stringify(componentsFile, null, 4), 'utf8')
-    .end('\n');
 
 // 创建 package
 Files.forEach((file) => {
@@ -126,7 +87,7 @@ navConfigFile.forEach((nav) => {
     }
 });
 
-fileSave(path.join(__dirname, '../../examples/map.json'))
+fileSave(path.join(__dirname, '../../example/map.json'))
     .write(JSON.stringify(navConfigFile, null, 4), 'utf8')
     .end('\n');
 

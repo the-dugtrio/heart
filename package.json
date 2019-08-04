@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint --ext .js example",
     "webpack-dev-server": "webpack-dev-server",
-    "dev": "webpack-dev-server --mode=development --config build/webpack.example.js"
+    "dev": "webpack-dev-server --mode=development --config build/webpack.example.js",
+    "build:file": "node build/bin/icon-init & node build/bin/build-entry & node build/bin/build-example-entry & node build/bin/root-css & node build/bin/version"
   },
   "repository": {
     "type": "git",
@@ -44,10 +45,12 @@
     "eslint-loader": "^2.2.1",
     "eslint-plugin-react": "^7.14.3",
     "extract-text-webpack-plugin": "^3.0.2",
+    "file-save": "^0.2.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "json-loader": "^0.5.7",
+    "json-templater": "^1.2.0",
     "markdown-it-react-loader": "^1.0.0",
     "markdown-loader": "^5.1.0",
     "postcss-loader": "^3.0.0",
@@ -56,6 +59,7 @@
     "react-markdown-loader": "^1.2.1",
     "react-markdown-reader": "^1.2.0",
     "style-loader": "^0.23.1",
+    "uppercamelcase": "^3.0.0",
     "url-loader": "^2.1.0",
     "webpack": "^4.38.0",
     "webpack-cli": "^3.3.6",

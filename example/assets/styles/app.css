@@ -4,12 +4,12 @@
     flex-direction: column;
     header {
         display: flex;
-        padding: 12px;
+        padding: 36px;
         justify-content: space-between;
 
         li {
             float: left;
-            margin: 16px;
+            margin: 0px 16px;
         }
     }
 
@@ -25,6 +25,25 @@
 
             li {
                 line-height: 36px;
+            }
+
+            .group-name {
+                font-size: 13px;
+                /* color: ; */
+                line-height: 40px;
+            }
+
+            .com-group {
+                padding: 0px 12px;
+                li {
+                    margin: 0px 16px;
+                }
+            }
+        
+            .com-group-name {
+                color: #ccc;
+                font-size: 12px;
+                
             }
         }
 

@@ -34,5 +34,16 @@
                 "index": true
             }
         ]
+    },
+    {
+        "path": "/resource",
+        "componentName": "resource",
+        "children": [
+            {
+                "name": "changelog",
+                "alias": "更新日志",
+                "index": true
+            }
+        ]
     }
 ]
