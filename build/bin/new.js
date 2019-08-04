@@ -13,6 +13,7 @@ if (!process.argv[2]) {
 var path = require('path');
 var fileSave = require('file-save');
 var uppercamelcase = require('uppercamelcase');
+var componentsFile = require('../../components.json');
 var navConfigFile = require('../../example/map.json');
 
 var componentname = process.argv[2];
@@ -67,6 +68,17 @@ export default class ${ComponentName} extends React.Component {
 `
     }
 ];
+
+
+// 添加到 components.json
+if (componentsFile.base[componentname]) {
+    console.error(`${componentname} 已存在.`);
+    process.exit(1);
+}
+componentsFile.base[componentname] = `./src/components/${componentname}/index.js`;
+fileSave(path.join(__dirname, '../../components.json'))
+    .write(JSON.stringify(componentsFile, null, 4), 'utf8')
+    .end('\n');
 
 // 创建 package
 Files.forEach((file) => {

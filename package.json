@@ -7,7 +7,7 @@
     "lint": "eslint --ext .js example",
     "webpack-dev-server": "webpack-dev-server",
     "dev": "webpack-dev-server --mode=development --config build/webpack.example.js",
-    "build:file": "node build/bin/icon-init & node build/bin/build-entry & node build/bin/build-example-entry & node build/bin/root-css & node build/bin/version"
+    "build:file": "node build/bin/build-entry & node build/bin/root-css & node build/bin/version"
   },
   "repository": {
     "type": "git",

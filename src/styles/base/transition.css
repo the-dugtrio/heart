@@ -1,0 +1,5 @@
+.som-fade-enter-active,
+.som-fade-leave-active {
+    opacity: 1;
+    transition: opacity linear .2s;
+}
