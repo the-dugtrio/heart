@@ -31,8 +31,7 @@ const Test = ()=>{
 }
 const getContent = (path)=>{
     return ()=>{
-        return (<div>q
-                </div>)
+        return (<div>q</div>)
     }
 }
 
@@ -50,20 +49,9 @@ export default class App extends React.Component {
         return (
             <Router>
                 <Switch>
-                    {/* <TeamRoute path="/docs/guide" exact component={Layout} /> */}
-                    <TeamRoute path="/components" exact component={Layout}/>
-                    <TeamRoute path="/resource/" exact component={Layout}  />
-                    <Route path="/docs/guide">
-                    <Switch>
-                        <Route path="/docs/guide/index1" exact  component={Test}>
-                            111
-                        </Route>
-                        <Route path="/docs/guide/index2" exact  component={Test}>
-                            222
-                        </Route>
-                        <Redirect to="/docs/guide/index2" />
-                        </Switch>
-                    </Route>
+                    <TeamRoute path="/docs/guide"  component={Layout} />
+                    <TeamRoute path="/components"  component={Layout}/>
+                    <TeamRoute path="/resource/" component={Layout}  />
                     <Redirect to="/docs/guide" />
                 </Switch>
             </Router>
