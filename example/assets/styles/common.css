@@ -1,97 +1,108 @@
 @import 'highlight.js/styles/atom-one-light.css';
 
+html,
 body {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,
-               "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",
-               Arial,sans-serif;
-    font-weight: 400;
-    color: rgba(27,28,51,.79);
-    -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  background: #f2f3f5;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+    Arial, sans-serif;
+  font-weight: 400;
+  color: rgba(27, 28, 51, .79);
+  -webkit-font-smoothing: antialiased;
 }
 
 code {
-    padding: 2px 4px;
-    border-radius: 4px;
-    color: var(--color-primary);
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: var(--color-primary);
 }
 
 code.hljs {
-    padding: 16px 20px;
+  padding: 16px 20px;
 }
 
 .hljs {
-    line-height: 1.5;
+  line-height: 1.5;
 }
 
-.hljs-comment, .hljs-quote {
-    font-style: inherit;
-    font-size: 13px;
+.hljs-comment,
+.hljs-quote {
+  font-style: inherit;
+  font-size: 13px;
 }
 
 blockquote {
-    font-size: 90%;
-    color: #999;
-    border-left: 4px solid #e9e9e9;
-    padding-left: .8em;
-    margin: 1em 0;
-    font-size: 13px;
+  font-size: 90%;
+  color: #999;
+  border-left: 4px solid #e9e9e9;
+  padding-left: .8em;
+  margin: 1em 0;
+  font-size: 13px;
 }
 
 a {
-    color: var(--color-primary);
-    text-decoration: none;
+  color: var(--color-primary);
+  text-decoration: none;
 }
 
 
-button, input, select, textarea {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    color: inherit;
-    outline: none;
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  outline: none;
 }
 
-.clearfix{
-    @utils-clearfix;
+.clearfix {
+  @utils-clearfix;
 }
 
 .docs-trans {
-    transition: all .2s;
+  transition: all .2s;
 }
 
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    empty-cells: show;
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid #e9e9e9;
+  width: 100%;
+  margin: 8px 0 16px;
+  font-size: 13px;
+  color: #5c6b77;
+
+  th,
+  td {
     border: 1px solid #e9e9e9;
-    width: 100%;
-    margin: 8px 0 16px;
-    font-size: 13px;
-    color: #5c6b77;
+    padding: 8px 16px;
+    text-align: left;
+  }
 
-    th,
-    td {
-        border: 1px solid #e9e9e9;
-        padding: 8px 16px;
-        text-align: left;
-    }
+  td:first-child {
+    background: #fcfcfc;
+    font-weight: 500;
+    width: 20%;
+  }
 
-    td:first-child {
-        background: #fcfcfc;
-        font-weight: 500;
-        width: 20%;
-    }
+  th {
+    white-space: nowrap;
+    font-weight: 600;
+    background: #f7f7f7;
+  }
 
-    th {
-        white-space: nowrap;
-        font-weight: 600;
-        background: #f7f7f7;
-    }
-
-    td {
-        line-height: 1.8;
-    }
+  td {
+    line-height: 1.8;
+  }
 }
 
 code[class*="language-"],
@@ -114,14 +125,18 @@ pre[class*="language-"] {
   color: #5e6687;
 }
 
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
   text-shadow: none;
   background: #dfe2f1;
 }
 
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
   text-shadow: none;
   background: #dfe2f1;
 }
@@ -134,7 +149,7 @@ pre[class*="language-"] {
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
+:not(pre)>code[class*="language-"] {
   padding: .1em;
   border-radius: .3em;
 }
@@ -232,7 +247,7 @@ pre[class*="language-"] {
   cursor: help;
 }
 
-pre > code.highlight {
+pre>code.highlight {
   outline: 0.4em solid #c94922;
   outline-offset: .4em;
 }
@@ -244,7 +259,7 @@ pre > code.highlight {
   border-right-color: #dfe2f1;
 }
 
-.line-numbers-rows > span:before {
+.line-numbers-rows>span:before {
   color: #979db4;
 }
 

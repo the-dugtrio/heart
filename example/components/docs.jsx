@@ -1,153 +1,60 @@
-import React from 'react';
-import { HashRouter as Router, Link, NavLink, Route, Redirect, Switch } from 'react-router-dom';
-import routerConfig from '../router';
-
+import React, {Component} from 'react';
+import { HashRouter as Router, Redirect, Switch, Route, NavLink } from 'react-router-dom';
+import Layout from './Layout';
 const routesMap = require('../map.json');
 
-export default class App extends React.Component {
-    state = {
-        filterComponents: [],
-        path: ''
-    }
+const Menu = (path)=>{
+    return (<div>
+        <ul className="nav">
+            <li className="nav-item">
+                <NavLink to="/docs/guide/index" activeClassName="active">
+                index
+                </NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink to="/docs/guide/index1" activeClassName="active">
+                index1
+                </NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink to="/docs/guide/index2" activeClassName="active">
+                index2
+                </NavLink>
+            </li>
+        </ul>
+    </div>);
+}
 
-    themeStyle = '';
+const Test = ()=>{
+    return(<div>1</div>)
+}
 
-    initStyleReg = '';
+const Content = (props)=>{
+    const {match} = props;
+    return (<div>
+                {match.url}
+                <Route path={`${match.url}/index`} exact component={Test}></Route>
+                <Route path={`${match.url}/index1`} exact component={Test}></Route>
+                <Route path={`${match.url}/index2`} exact component={Test}></Route>
+           </div>);
+}
 
-
-    componentWillMount() {
-        window.addEventListener(
-            'hashchange',
-            () => {
-                window.scrollTo(0, 0);
-                this.getComponents();
-                this.getPage();
-            },
-            false,
-        );
-        this.getPage();
-    }
-
-
-    getComponents () {
-        console.log(window.location.hash);
-    }
-
-    clusterDeal = color => {
-        this.initColorCluster = [color, ...this.generateColors(color)];
-        this.initStyleReg = this.initColorCluster
-            .join('|')
-            .replace(/\(/g, '\\(')
-            .replace(/\)/g, '\\)')
-            .replace(/0\./g, '.');
-    };
-
-    getPage() {
-        // eslint-disable-next-line
-        let path = location.hash.match(/(?:\/(.+))?\/(.+)/);
-        if (!path) return;
-        path = path[0]
-
-        let filter = routesMap.filter(route => path.indexOf(route.path) > -1);
-        if (!filter) return;
-        filter = filter[0]
-        this.setState({
-            path: filter.path,
-            filterComponents: filter.children
-        })
-    }
-
+export default class App extends Component {
     render() {
-        const { filterComponents, path } = this.state;
         return (
             <Router>
-                <div className="app">
-                    <header className="header">
-                        <h1>
-                            {/* <img src={require('./assets/logo.png')} /> */}
-                            <span>Heart</span>
-                        </h1>
-                        <ul className="nav">
-                            <li className="nav-item">
-                                <NavLink to="/docs/guide/introduce" activeClassName="active">
-                                    指南
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink to="/components/installation" activeClassName="active">
-                                    组件
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink to="/resource/changelog" activeClassName="active">
-                                    资源
-                                </NavLink>
-                            </li>
-                        </ul>
-                    </header>
-
-                    <div className="main container">
-                        <nav className="side-nav">
-                            <ul>{
-                                    filterComponents.map((group, i) => {
-
-                                        if (group.children) {
-                                            return (
-                                                <div className="group">
-                                                    <div className="group-name">{group.alias}</div>
-                                                    {
-                                                        group.children.map((comGroup, i) => {
-                                                            return <ul key={comGroup.groupName} className='com-group'>
-                                                                <div className='com-group-name'>{comGroup.groupName}</div>
-                                                                {
-                                                                    comGroup.children.map((com) => {
-                                                                        return <li key={com.name}>
-                                                                            <Link 
-                                                                                to={path + '/' + com.name}>
-                                                                                {com.name}
-                                                                            </Link>
-                                                                        </li>
-                                                                    })
-                                                                }
-                                                            </ul>
-                                                        })
-                                                    }
-                                                </div>
-                                            )
-                                        } else {
-                                            return <li key={group.name}>
-                                                <Link 
-                                                    to={path + '/' + group.name}>
-                                                    {group.alias}
-                                                </Link>
-                                            </li>
-                                        }
-                                    })
-                                }
-                            </ul>
-                        </nav>
-                       
-                        <div className="content">
-                            {
-                                routerConfig.map((item, key) => {
-                                    return item.children && item.children.map((com, i) => {
-                                        if (com.path) {
-                                            return <Route 
-                                                    key={com.path}
-                                                    path={item.path + '/' + com.path}
-                                                    component={com.component}>
-                                                </Route>
-                                        } else {
-                                            return <Redirect to={item.path + '/' + com.redirect} ></Redirect>
-                                        }
-                                    })
-                                })
-                            }
-                        </div>
-                    </div>
-                    <footer className="footer">
-                    </footer>
-                </div>
+                <Switch>
+                    <Route path="/docs/guide" exact component={(props)=>{
+                        return(<Layout menu={<Menu {...props}/>} content={<Content {...props}/>}></Layout>)
+                    }} />
+                    <Route path="/components" exact component={(props)=>{
+                        return(<Layout menu={<Menu {...props}/>} content={<Content {...props}/>}></Layout>)
+                    }}/>
+                    <Route path="/resource" exact component={(props)=>{
+                        return(<Layout menu={<Menu {...props}/>} content={<Content {...props}/>}></Layout>)
+                    }}  />
+                    <Redirect to="/docs/guide" />
+                </Switch>
             </Router>
         );
     }

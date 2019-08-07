@@ -1,11 +1,29 @@
-.app  {
+.app {
     height: 100vh;
     display: flex;
     flex-direction: column;
+
     header {
-        display: flex;
-        padding: 36px;
-        justify-content: space-between;
+        box-shadow: 0 2px 10px rgba(86, 112, 139, .1);
+        background: #fff;
+
+        .docs__container {
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            margin: auto;
+        }
+
+        .docs__logo {
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 40px;
+            }
+        }
 
         li {
             float: left;
@@ -16,6 +34,10 @@
     .container {
         flex: 1;
         display: flex;
+        width: 90%;
+        margin: 30px auto;
+        border-radius: 4px;
+        background: #fff;
 
 
         .side-nav {
@@ -35,15 +57,16 @@
 
             .com-group {
                 padding: 0px 12px;
+
                 li {
                     margin: 0px 16px;
                 }
             }
-        
+
             .com-group-name {
                 color: #ccc;
                 font-size: 12px;
-                
+
             }
         }
 
@@ -52,7 +75,5 @@
         }
     }
 
-    
+
 }
-
-

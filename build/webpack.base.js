@@ -7,17 +7,13 @@ module.exports = {
         filename: 'bundle.js'
     },
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['.js', '.jsx']
     },
     module: {
         rules: [
             {
-                test: /\.(postcss|css)$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'postcss-loader'
-                ]
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader', 'postcss-loader'],
             },
             {
                 test: /\.js$/,
@@ -25,12 +21,13 @@ module.exports = {
                 loader: 'babel-loader'
             },
             {
-                test: /\.(gif|jpg|png|woff|svg|eot|ttf|ico|psd)\??.*$/,
-                loader: 'url-loader',
-                options: {
-                    limit: 8192
-                }
-            }
+                test: /\.(ttf|eot|svg|woff|woff2)(\?.+)?$/,
+                loader: 'file-loader?name=[hash:12].[ext]',
+            },
+            {
+                test: /\.(jpe?g|png|gif)(\?.+)?$/,
+                loader: 'url-loader?name=[hash:12].[ext]&limit=25000',
+            },
         ]
     }
 }

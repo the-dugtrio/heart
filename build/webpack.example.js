@@ -1,11 +1,13 @@
 const HtmlWebPackPlugin = require( 'html-webpack-plugin' );
 var webpack = require('webpack');
+var merge = require('webpack-merge');
 var ProgressBarPlugin = require('progress-bar-webpack-plugin');
 var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const markdownRenderer = require('react-markdown-reader').renderer;
+var webpackBase = require('./webpack.base');
 const path = require( 'path' );
 
-module.exports = {
+const config = merge(webpackBase, {
    context: __dirname,
    entry: '../example/main.js',
    resolve: {
@@ -21,6 +23,7 @@ module.exports = {
       filename: 'main.js',
       publicPath: '/',
    },
+   devtool:'cheap-module-source-map',
    devServer: {
       historyApiFallback: true,
       port: 8080,
@@ -38,18 +41,10 @@ module.exports = {
             use: ['babel-loader', 'markdown-it-react-loader']
          },
          {
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader', 'postcss-loader'],
-         },
-         {
             test: /\.json$/,
             type: 'javascript/auto',
             loader: 'json-loader'
          },
-         {
-            test: /\.(png|j?g|svg|gif)?$/,
-            use: 'file-loader'
-         }
 ]
    },
    stats: {
@@ -78,4 +73,5 @@ module.exports = {
           }
       }
    }
-};
+})
+module.exports = config;
