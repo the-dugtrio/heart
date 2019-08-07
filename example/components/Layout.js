@@ -3,16 +3,17 @@ import { HashRouter as Router, Redirect, Switch, Route, NavLink } from 'react-ro
 
 import Head from './Head';
 
-const Layout = (prop)=>{
+const Layout = (props)=>{
+    const { match }= props;
     return (
         <div className="app">
-            <Head/>
+            <Head match={match}/>
             <div className="main container">
                 <nav className="side-nav">
-                    {prop.menu}
+                    {props.menu}
                 </nav>
                 <div className="content">
-                    {prop.content}
+                    {props.content}
                 </div>
             </div>
             <footer className="footer">

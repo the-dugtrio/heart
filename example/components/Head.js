@@ -1,9 +1,11 @@
 import React from 'react';
 import {  NavLink } from 'react-router-dom';
+import classNames from "classnames";
 
 import logoImg from '../assets/images/logo.png';
 
-const Head =()=>{
+const Head =(props)=>{
+    const {match:{path}} = props;
     return(
         <header className="header">
             <div className="docs__container">
@@ -14,17 +16,17 @@ const Head =()=>{
                     </h1>
                 </div>
                 <ul className="nav">
-                    <li className="nav-item">
+                    <li className={classNames("nav-item", {"active":path==='/docs/guide'})}>
                         <NavLink to="/docs/guide" activeClassName="active">
                             指南
                         </NavLink>
                     </li>
-                    <li className="nav-item">
+                    <li className={classNames("nav-item", {"active":path==='/components'})}>
                         <NavLink to="/components" activeClassName="active">
                             组件
                         </NavLink>
                     </li>
-                    <li className="nav-item">
+                    <li className={classNames("nav-item", {"active":path==='/resource'})}>
                         <NavLink to="/resource" activeClassName="active">
                             资源
                         </NavLink>
