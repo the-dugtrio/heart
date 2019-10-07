@@ -1,5 +1,0 @@
-{
-    "base": {
-        "badge": "./src/components/badge/index.js"
-    }
-}
