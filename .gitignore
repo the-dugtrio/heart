@@ -2,6 +2,7 @@ node_modules
 .DS_Store
 /dist
 /build
+/lib
 .idea
 
 # temp file for git conflict merging

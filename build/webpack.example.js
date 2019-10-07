@@ -8,6 +8,7 @@ var webpackBase = require('./webpack.base');
 const path = require( 'path' );
 
 const config = merge(webpackBase, {
+   mode: process.env.NODE_ENV,
    context: __dirname,
    entry: '../example/main.js',
    resolve: {
@@ -19,9 +20,9 @@ const config = merge(webpackBase, {
       }
   },
    output: {
-      path: path.resolve( __dirname, 'dist' ),
+      path: path.resolve( __dirname, '../dist' ),
       filename: 'main.js',
-      publicPath: '/',
+      publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
    },
    devtool:'cheap-module-source-map',
    devServer: {
