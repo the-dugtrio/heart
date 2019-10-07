@@ -9,9 +9,9 @@ const Layout = (props)=>{
         <div className="app">
             <Head match={match}/>
             <div className="main container">
-                <nav className="side-nav">
+                { props.menu && (<nav className="side-nav">
                     {props.menu}
-                </nav>
+                </nav>) }
                 <div className="content">
                     {props.content}
                 </div>

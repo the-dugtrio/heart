@@ -2,7 +2,6 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-
     header {
         box-shadow: 0 2px 10px rgba(86, 112, 139, .1);
         background: #fff;
@@ -33,24 +32,44 @@
 
     .container {
         flex: 1;
-        display: flex;
-        width: 90%;
-        margin: 30px auto;
+        width: 85%;
+        margin: 50px auto;
         border-radius: 4px;
-        background: #fff;
+        color: #fff;
+
+        &:after {
+            clear: both;
+        }
 
 
         .side-nav {
-            width: 25%;
-            padding: 0px 16px;
+            width: 150px;
+            padding-left: 16px;
+            float: left;
             border-right: 1px solid #ccc;
+
+            .side-title {
+                color: #ccc;
+                font-size: 12px;
+            }
+
+            .active li {
+                background-color: rgba(53, 42, 15, 0.35);
+                color: #ffac00;
+                border-right: 2px solid #ffac00;
+            }
 
             li {
                 line-height: 36px;
+                padding-left: 8px;
+
+                &:hover {
+                    color: #ffac00;
+                }
             }
 
             .page-docs__group__submenu {
-                padding-left: 12px;
+                padding-left: 16px;
 
                 .group-title {
                     color: #999;
@@ -58,14 +77,16 @@
                 }
 
                 ul {
-                    padding-left: 12px;
+                    padding-left: 16px;
                 }
             }
 
         }
 
         .content {
-            padding: 20px;
+            height: 100%;
+            width: 79%;
+            float: right;
         }
     }
 

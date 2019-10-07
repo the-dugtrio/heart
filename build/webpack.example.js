@@ -54,7 +54,9 @@ const config = merge(webpackBase, {
    plugins: [
       new HtmlWebPackPlugin({
          template: path.resolve( __dirname, '../public/index.html' ),
-         filename: 'index.html'
+         filename: 'index.html',
+         inject: true,
+         favicon: '../example/assets/images/logo.gif'
       }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),

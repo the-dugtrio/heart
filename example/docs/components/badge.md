@@ -31,10 +31,3 @@ imports:
 | value | 显示值                                                     | string, number | —      | —      |
 | max   | 最大值，超过最大值会显示 'max+'，要求 value 是 number 类型 | number         | —      | —      |
 | isDot | 小圆点                                                     | boolean        | —      | false  |
-
-### 贡献者
-
-| 类型   | 参与者 |
-| ------ | ------ |
-| 维护者 | 机制哥 |
-| 设计师 |        |

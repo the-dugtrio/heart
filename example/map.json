@@ -25,10 +25,11 @@
         ]
     },
     {
-        "path": "/docs/guide",
+        "path": "/docs",
         "componentName": "docs",
         "children": [
-            {
+            {   
+                "componentName": "introduce",
                 "name": "introduce",
                 "alias": "介绍",
                 "index": true

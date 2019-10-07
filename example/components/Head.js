@@ -2,7 +2,8 @@ import React from 'react';
 import {  NavLink } from 'react-router-dom';
 import classNames from "classnames";
 
-import logoImg from '../assets/images/logo.png';
+import logoImg from '../assets/images/logo.gif';
+import '../assets/styles/head.css';
 
 const Head =(props)=>{
     const {match:{path}} = props;
@@ -16,8 +17,8 @@ const Head =(props)=>{
                     </h1>
                 </div>
                 <ul className="nav">
-                    <li className={classNames("nav-item", {"active":path==='/docs/guide'})}>
-                        <NavLink to="/docs/guide" activeClassName="active">
+                    <li className={classNames("nav-item", {"active":path==='/docs'})}>
+                        <NavLink to="/docs" activeClassName="active">
                             指南
                         </NavLink>
                     </li>

@@ -4,7 +4,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: #f2f3f5;
 }
 
 body {
@@ -13,6 +12,7 @@ body {
     Arial, sans-serif;
   font-weight: 400;
   color: rgba(27, 28, 51, .79);
+  background: rgba(5, 12, 14, 0.925);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -43,6 +43,26 @@ blockquote {
   padding-left: .8em;
   margin: 1em 0;
   font-size: 13px;
+}
+
+
+.doc .doc-demo-box:hover {
+  box-shadow: none;
+}
+
+.doc-demo-box {
+  margin: 12px 0px;
+}
+
+
+.doc h3 {
+  margin-top: 2em;
+}
+
+.doc table {
+  th,td:first-child {
+    background: transparent;
+  }
 }
 
 a {
@@ -270,4 +290,30 @@ pre>code.highlight {
   background: rgba(107, 115, 148, 0.2);
   background: -webkit-linear-gradient(left, rgba(107, 115, 148, 0.2) 70%, rgba(107, 115, 148, 0));
   background: linear-gradient(to right, rgba(107, 115, 148, 0.2) 70%, rgba(107, 115, 148, 0));
+}
+
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  margin: 16px 0px;
 }
