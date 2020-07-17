@@ -80,7 +80,7 @@
     "babel-cli": "^6.26.0",
     "babel-preset-react-app": "^9.0.0",
     "highlight.js": "^9.15.10",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "markdown-it": "^9.0.1",
     "postcss-ui-theme": "^0.2.0",
     "react": "^16.8.6",
