@@ -81,7 +81,7 @@
     "babel-preset-react-app": "^9.0.0",
     "highlight.js": "^9.15.10",
     "lodash": "^4.17.15",
-    "markdown-it": "^9.0.1",
+    "markdown-it": "^12.3.2",
     "postcss-ui-theme": "^0.2.0",
     "react": "^16.8.6",
     "react-code-view": "^1.2.0",
